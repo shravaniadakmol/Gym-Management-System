@@ -1,0 +1,97 @@
+ show databases
+    -> ;
++--------------------+
+| Database           |
++--------------------+
+| acpproject         |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| womengym           |
+| world              |
++--------------------+
+8 rows in set (0.01 sec)
+
+mysql> use womengym;
+Database changed
+mysql> show tables;
++--------------------+
+| Tables_in_womengym |
++--------------------+
+| equipments         |
+| members            |
+| trainers           |
++--------------------+
+3 rows in set (0.01 sec)
+
+mysql> describe members;
++---------------+--------------+------+-----+---------+----------------+
+| Field         | Type         | Null | Key | Default | Extra          |
++---------------+--------------+------+-----+---------+----------------+
+| member_id     | int          | NO   | PRI | NULL    | auto_increment |
+| name          | varchar(100) | YES  |     | NULL    |                |
+| mobile_number | varchar(20)  | YES  |     | NULL    |                |
+| age           | int          | YES  |     | NULL    |                |
++---------------+--------------+------+-----+---------+----------------+
+4 rows in set (0.01 sec)
+
+mysql> describe trainers;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| trainer_id   | int          | NO   | PRI | NULL    | auto_increment |
+| trainer_name | varchar(200) | YES  |     | NULL    |                |
+| tcontact     | varchar(20)  | YES  |     | NULL    |                |
+| tage         | int          | YES  |     | NULL    |                |
+| salary       | int          | YES  |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+5 rows in set (0.01 sec)
+
+mysql> describe equipments;
++----------------+---------------+------+-----+---------+----------------+
+| Field          | Type          | Null | Key | Default | Extra          |
++----------------+---------------+------+-----+---------+----------------+
+| equipment_id   | int           | NO   | PRI | NULL    | auto_increment |
+| member_id      | int           | YES  | MUL | NULL    |                |
+| trainer_id     | int           | YES  | MUL | NULL    |                |
+| workout        | varchar(350)  | YES  |     | NULL    |                |
+| equipment_list | varchar(5000) | YES  |     | NULL    |                |
++----------------+---------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from members;
++-----------+------------------+---------------+------+
+| member_id | name             | mobile_number | age  |
++-----------+------------------+---------------+------+
+|         1 | Shravani Adakmol | 8169673623    |   20 |
+|         2 | Preeti Gugle     | 8424042234    |   20 |
+|         3 | Raj Jadhav       | 1248795789    |   21 |
+|         4 | SAvi Sen         | 15845175      |   20 |
+|         5 | Yash Khochare    | 9930212367    |   22 |
++-----------+------------------+---------------+------+
+5 rows in set (0.00 sec)
+
+mysql> select * from trainers;
++------------+--------------+-------------+------+--------+
+| trainer_id | trainer_name | tcontact    | tage | salary |
++------------+--------------+-------------+------+--------+
+|          1 | Aditi Rathod | 2548976987  |   20 |  50000 |
+|          2 | Shravan Wagh | 2487851458  |   25 |  60000 |
+|          3 | Joan Will    | 78451245778 |   27 |  20000 |
++------------+--------------+-------------+------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select * from equipments;
++--------------+-----------+------------+-----------+---------------------+
+| equipment_id | member_id | trainer_id | workout   | equipment_list      |
++--------------+-----------+------------+-----------+---------------------+
+|            1 |         1 |          1 | Chest     | Chest Press Machine |
+|            2 |         2 |          2 | Chest day | Dumbbells           |
+|            3 |         3 |          2 | Chest     | dumbbells           |
+|            4 |         5 |          3 | Leg day   | treadmill           |
++--------------+-----------+------------+-----------+---------------------+
+4 rows in set (0.01 sec)
+
+mysql>
